@@ -4,7 +4,7 @@
 <head>
 
     <meta charset="utf-8" />
-    <title>Inventory Management System</title>
+    <title>BBT M&E System</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta content="Inventory Management System" name="description" />
     <meta content="Themesdesign" name="author" />

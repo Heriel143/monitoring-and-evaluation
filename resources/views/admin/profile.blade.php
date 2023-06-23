@@ -9,14 +9,14 @@
                             src="{{ !empty($adminData->profile_image) ? url('upload/admin_images/' . $adminData->profile_image) : url('upload/no_image.jpg') }}"
                             alt="Card image cap">
                         <div class="card-body">
-                            <h4 class="card-title">Name: {{ $adminData->name }}</h4>
+                            <h4 class="card-title">Name: {{ $adminData->first_name }} {{ $adminData->last_name }}</h4>
                             <hr>
                             <h4 class="card-title">Email: {{ $adminData->email }}</h4>
                             <hr>
-                            <h4 class="card-title">Username: {{ $adminData->username }}</h4>
+                            {{-- <h4 class="card-title">Username: {{ $adminData->username }}</h4> --}}
                             <hr>
                             <a href="{{ route('edit.profile') }}"
-                                class="flex justify-center px-3 py-2 font-semibold text-white bg-blue-900 rounded-lg hover:bg-blue-800">Edit
+                                class="flex justify-center px-3 py-2 font-semibold text-white bg-green-700 rounded-lg hover:bg-green-600">Edit
                                 profile</a>
 
                         </div>

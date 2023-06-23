@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Disaggretion\AgeCategory;
+use App\Models\Disaggretion\Sex;
+use App\Models\Disaggretion\TypeOfIndividual;
+use App\Models\Indicator;
+use App\Models\IndicatorData;
 use App\Models\Role;
 use App\Models\User;
 use Carbon\Carbon;
@@ -57,6 +62,25 @@ class UserController extends Controller
         // dd($employee);
         $roles = Role::all();
         return view('admin.employee.editEmployee', compact('employee', 'roles'));
+    }
+    public function direct()
+    {
+        $project = [];
+        $indicators = Indicator::all()->take(10);
+        foreach ($indicators as $key2 => $indicator) {
+            // $disaggretion=
+            $indicatordata = IndicatorData::where('indicator_id', $indicator->id)->get();
+            foreach ($indicatordata as $key => $data) {
+                $indicators[$key2]['target'] += $data->target;
+                $indicators[$key2]['actual'] += $data->actual;
+            }
+            $project[$key2] = $indicators[$key2]['actual'] == 0 ? 0 : $indicators[$key2]['actual'] / $indicators[$key2]['target'];
+        }
+
+        $projectprog = (array_sum($project) / count($project)) * 100;
+        // dd($employee);
+        // $roles = Role::all();
+        return view('admin.index', compact('indicators', 'projectprog'));
     }
     public function deleteEmployee($id)
     {

@@ -4,11 +4,11 @@
             <div class="col-sm-6">
                 <script>
                     document.write(new Date().getFullYear())
-                </script> © Inventory Management System.
+                </script> © Monitoring and Evaluation System.
             </div>
             <div class="col-sm-6">
                 <div class="text-sm-end d-none d-sm-block">
-                    Final Year Project
+                    Advanced Web Programming Assignment
                 </div>
             </div>
         </div>

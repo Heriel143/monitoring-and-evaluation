@@ -40,7 +40,7 @@
 
                                 <div class="flex justify-end">
                                     <button type="submit"
-                                        class="px-3 py-2 font-semibold text-white bg-blue-900 rounded-lg hover:bg-blue-800">Change
+                                        class="px-3 py-2 font-semibold text-white bg-green-700 rounded-lg hover:bg-green-600">Change
                                         Password</button>
                                 </div>
                                 <!-- end row -->

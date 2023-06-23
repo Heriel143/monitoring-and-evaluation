@@ -1,93 +1,54 @@
-<!DOCTYPE html>
-<html lang="en">
+<x-guest-layout>
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet" />
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css" />
-
-    <link rel="stylesheet" href="css/owl.carousel.min.css" />
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-
-    <!-- Style -->
-    <link rel="stylesheet" href="css/style.css" />
-
-    <title>Login #7</title>
-</head>
-
-<body>
-    <div class="content">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <img src="images/undraw_remotely_2j6y.svg" alt="Image" class="img-fluid" />
-                </div>
-                <div class="col-md-6 contents">
-                    <div class="row justify-content-center">
-                        <div class="col-md-8">
-                            <div class="mb-4">
-                                <h3>Sign In</h3>
-                                <p class="mb-4">
-                                    Lorem ipsum dolor sit amet elit. Sapiente sit aut eos
-                                    consectetur adipisicing.
-                                </p>
-                            </div>
-                            <form action="{{ route('login') }}" method="POST">
-                                @csrf
-
-                                <div class="form-group first">
-                                    <label for="username">Email or Username</label>
-                                    <input type="email" class="form-control" id="email" name="email" />
-                                </div>
-                                <br>
-                                <div class="mb-4 form-group last">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" id="password" name="password" />
-                                </div>
-
-                                <div class="mb-5 d-flex align-items-center">
-                                    <label class="mb-0 control control--checkbox"><span class="caption">Remember
-                                            me</span>
-                                        <input type="checkbox" checked="checked" />
-                                        <div class="control__indicator"></div>
-                                    </label>
-                                    <span class="ml-auto"><a href="{{ route('password.request') }}"
-                                            class="forgot-pass">Forgot
-                                            Password</a></span>
-                                </div>
-
-                                <input type="submit" class="btn btn-block btn-primary hover:cursor-pointer" />
-
-                                {{-- <span class="my-4 text-left d-block text-muted">&mdash; or login with &mdash;</span>
-
-                                <div class="social-login">
-                                    <a href="#" class="facebook">
-                                        <span class="mr-3 icon-facebook"></span>
-                                    </a>
-                                    <a href="#" class="twitter">
-                                        <span class="mr-3 icon-twitter"></span>
-                                    </a>
-                                    <a href="#" class="google">
-                                        <span class="mr-3 icon-google"></span>
-                                    </a>
-                                </div> --}}
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block w-full mt-1" type="email" name="email" :value="old('email')" required
+                autofocus autocomplete="username" />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
-    </div>
 
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
+        <!-- Password -->
+        <div class="mt-4">
+            <x-input-label for="password" :value="__('Password')" />
 
-</html>
+            <x-text-input id="password" class="block w-full mt-1" type="password" name="password" required
+                autocomplete="current-password" />
+
+            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        </div>
+
+        <!-- Remember Me -->
+        <div class="block mt-4">
+            <label for="remember_me" class="inline-flex items-center">
+                <input id="remember_me" type="checkbox"
+                    class="text-indigo-600 border-gray-300 rounded shadow-sm dark:bg-gray-900 dark:border-gray-700 focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800"
+                    name="remember">
+                <span class="ml-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+            </label>
+        </div>
+
+        <div class="mt-4 ">
+            <x-secondary-button class="float-right ml-3">
+                <a href="{{ route('register') }}"
+                    class="float-left ml-4 text-sm underline dark:text-gray-500">Register</a>
+
+            </x-secondary-button>
+            @if (Route::has('password.request'))
+                <a class="float-right text-sm text-gray-600 underline rounded-md dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800"
+                    href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
+            @endif
+
+            <x-primary-button class="float-right ml-3">
+                {{ __('Log in') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>

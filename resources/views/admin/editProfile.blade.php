@@ -3,7 +3,7 @@
     <div class="page-content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-8">
+                <div class="col-6">
                     <div class="card">
                         <div class="card-body">
 
@@ -11,10 +11,17 @@
                             <form action="{{ route('store.profile') }}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="mb-3 row">
-                                    <label for="example-text-input" class="col-sm-2 col-form-label">Name</label>
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">First Name:</label>
                                     <div class="col-sm-8">
-                                        <input class="form-control" type="text" name="name"
-                                            value="{{ $editData->name }}" id="example-text-input">
+                                        <input class="form-control" type="text" name="first_name"
+                                            value="{{ $editData->first_name }}" id="example-text-input">
+                                    </div>
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="example-text-input" class="col-sm-2 col-form-label">Last Name:</label>
+                                    <div class="col-sm-8">
+                                        <input class="form-control" type="text" name="last_name"
+                                            value="{{ $editData->last_name }}" id="example-text-input">
                                     </div>
                                 </div>
                                 <!-- end row -->
@@ -26,13 +33,13 @@
                                     </div>
                                 </div>
                                 <!-- end row -->
-                                <div class="mb-3 row">
+                                {{-- <div class="mb-3 row">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Username</label>
                                     <div class="col-sm-8">
                                         <input class="form-control" type="text" name="username"
                                             value="{{ $editData->name }}" id="example-text-input">
                                     </div>
-                                </div>
+                                </div> --}}
                                 <!-- end row -->
                                 <div class="mb-3 row">
                                     <label for="example-text-input" class="col-sm-2 col-form-label">Profile Image</label>
@@ -53,7 +60,7 @@
                                 <div class="flex justify-end">
 
                                     <button type="submit"
-                                        class="px-3 py-2 font-semibold text-white bg-blue-900 rounded-lg hover:bg-blue-800">Update
+                                        class="px-3 py-2 font-semibold text-white bg-green-700 rounded-lg hover:bg-green-600">Update
                                         Profile</button>
                                 </div>
                                 <!-- end row -->

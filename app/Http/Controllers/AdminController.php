@@ -74,8 +74,9 @@ class AdminController extends Controller
     {
         $id = Auth::user()->id;
         $data = User::find($id);
-        $data->name = $request->name;
-        $data->username = $request->username;
+        $data->first_name = $request->first_name;
+        $data->last_name = $request->last_name;
+        // $data->username = $request->username;
         $data->email = $request->email;
 
         if ($request->file('profile_image')) {

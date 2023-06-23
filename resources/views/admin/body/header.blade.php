@@ -1,5 +1,5 @@
 <header id="page-topbar">
-    <div class="navbar-header">
+    <div class="bg-green-700 navbar-header">
         <div class="d-flex">
             <!-- LOGO -->
             {{-- {{asset('backend/')}} --}}
@@ -22,8 +22,8 @@
                     </span>
                     <span class="flex items-center justify-center pt-2 logo-lg">
 
-                        <span class="inline-block -mx-5 text-xl font-semibold leading-6 text-gray-300">
-                            Inventory Management System
+                        <span class="inline-block mt-3 -mx-5 text-xl font-extrabold leading-6 text-center text-white">
+                            BBT M&E System
                         </span>
                         {{-- <img src="{{ asset('backend/assets/images/logo-light.png') }}" alt="logo-light" height="20"> --}}
                     </span>
@@ -35,12 +35,12 @@
             </button>
 
             <!-- App Search-->
-            <form class="app-search d-none d-lg-block">
+            {{-- <form class="app-search d-none d-lg-block">
                 <div class="position-relative">
                     <input type="text" class="form-control" placeholder="Search...">
                     <span class="ri-search-line"></span>
                 </div>
-            </form>
+            </form> --}}
 
 
         </div>
@@ -96,7 +96,7 @@
                             </div>
                         </div>
                     </div>
-                    <div data-simplebar style="max-height: 230px;">
+                    {{-- <div data-simplebar style="max-height: 230px;">
                         <a href="" class="text-reset notification-item">
                             <div class="d-flex">
                                 <div class="avatar-xs me-3">
@@ -163,7 +163,7 @@
                                 <i class="mdi mdi-arrow-right-circle me-1"></i> View More..
                             </a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
             @php
@@ -178,7 +178,8 @@
                         <img class="rounded-circle header-profile-user"
                             src="{{ !empty($adminData->profile_image) ? url('upload/admin_images/' . $adminData->profile_image) : url('upload/no_image.jpg') }}"
                             alt="Header Avatar">
-                        <span class="d-none d-xl-inline-block ms-1">{{ $adminData->name }}</span>
+                        <span class="d-none d-xl-inline-block ms-1">{{ $adminData->first_name }}
+                            {{ $adminData->last_name }}</span>
                         <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                     </div>
                 </button>
